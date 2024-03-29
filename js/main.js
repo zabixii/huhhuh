@@ -1,4 +1,29 @@
 
+  var videoPlayer = document.getElementById('videoPlayer');
+  var videoPreview = document.getElementById('videoPreview');
+  var videoPlayed = false;
+
+  function playVideo() {
+    if (!videoPlayed) {
+      videoPlayer.style.display = 'block';
+      videoPlayer.play();
+      videoPreview.style.display = 'none';
+      videoPlayed = true;
+
+      // Pause the video when it ends
+      videoPlayer.onended = function() {
+        videoPlayer.pause();
+        videoPlayer.style.display = 'none'; // Hide the video element
+      };
+    }
+  }
+
+
+  // For devices that don't support scrolling events, such as desktops and mobiles (via click)
+  window.addEventListener('click', function() {
+    playVideo();
+  });
+
 
 
 
