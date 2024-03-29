@@ -27,78 +27,8 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
-
-
 </head>
 <body>
-
-
-
-<div class="container-grid">
-  <div class="video-container">
-    <div class="video-preview" id="videoPreview" onclick="playVideo()">
-      <img class="blur-image" src="https://picsum.photos/1080/920" alt="Fireplace Thumbnail">
-      <div class="play-button"></div>
-    </div>
-    <video id="videoPlayer">
-      <source src="https://nelonenmedia-pmd-ads-manual.nm-stream.nelonenmedia.fi/3102962_MID13184651__MID13184651__1438892_1800.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
-<script>
-  var videoPlayer = document.getElementById('videoPlayer');
-  var videoPreview = document.getElementById('videoPreview');
-  var videoPlayed = false;
-
-  function playVideo() {
-    if (!videoPlayed) {
-      videoPlayer.style.display = 'block';
-      videoPlayer.play();
-      videoPreview.style.display = 'none';
-      videoPlayed = true;
-      
-      // Pause the video when it ends
-      videoPlayer.onended = function() {
-        videoPlayer.pause();
-        videoPlayer.style.display = 'none'; // Hide the video element
-      };
-    }
-  }
-
-  // Function to check if the user is on a mobile device
-  function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
-
-  // Function to check if the video preview is in the viewport
-  function isElementInViewport(el) {
-    var rect = el.getBoundingClientRect();
-    var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    return (rect.top <= windowHeight && rect.bottom >= 0);
-  }
-
-  // Event listener for scrolling (only for non-mobile devices)
-  if (!isMobileDevice()) {
-    window.addEventListener('scroll', function() {
-      // Play the video when the video preview is in the viewport
-      if (!videoPlayed && isElementInViewport(videoPreview)) {
-        playVideo();
-      }
-    });
-  }
-
-  // For devices that don't support scrolling events, such as desktops and mobiles (via click)
-  window.addEventListener('click', function() {
-    playVideo();
-  });
-</script>
-
-
-
-
-    
     <!-- Start Header Area -->
     <header class="default-header">
         <div class="container">
